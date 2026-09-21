@@ -1,0 +1,4 @@
+rootProject.name = 'ecommerce-microservices'
+
+include 'shared-commons'
+include 'catalog-service'

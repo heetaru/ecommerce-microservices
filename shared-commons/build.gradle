@@ -1,0 +1,20 @@
+plugins {
+    id 'java'
+}
+
+group = 'org.example'
+version = '0.0.1-SNAPSHOT'
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    compileOnly 'org.projectlombok:lombok:1.18.42'
+    annotationProcessor 'org.projectlombok:lombok:1.18.42'
+    implementation 'org.springframework.boot:spring-boot-starter-web:4.1.0'
+}
+
+test {
+    useJUnitPlatform()
+}
