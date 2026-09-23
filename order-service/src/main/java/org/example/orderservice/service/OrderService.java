@@ -32,7 +32,9 @@ public class OrderService {
         Order savedOrder = orderRepository.save(newOrder);
 
         OrderPlacedEvent event = new OrderPlacedEvent(
-                savedOrder.getProductId(), savedOrder.getQuantity()
+                savedOrder.getId(),
+                savedOrder.getProductId(),
+                savedOrder.getQuantity()
         );
         kafkaTemplate.send("order-events", event);
 

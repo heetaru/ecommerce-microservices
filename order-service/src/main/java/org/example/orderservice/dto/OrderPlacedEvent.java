@@ -1,5 +1,7 @@
 package org.example.orderservice.dto;
 
 public record OrderPlacedEvent(
-        Long productId, Integer quantity
+        Long orderId,
+        Long productId,
+        Integer quantity
 ) {}
