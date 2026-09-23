@@ -16,8 +16,8 @@ import java.util.List;
 @Service
 @RequiredArgsConstructor
 public class OrderService {
-    final OrderRepository orderRepository;
-    final OrderMapper orderMapper;
+    private final OrderRepository orderRepository;
+    private final OrderMapper orderMapper;
     private final KafkaTemplate<Object, Object> kafkaTemplate;
 
     public List<OrderResponseDto> getAllOrders() {

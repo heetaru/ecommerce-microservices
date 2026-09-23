@@ -17,14 +17,16 @@ spring:
         format_sql: true
   kafka:
     bootstrap-servers: localhost:9092
+    # ДОДАЙ ОСЬ ЦЕЙ БЛОК ПРОДЮСЕРА:
+    producer:
+      key-serializer: org.apache.kafka.common.serialization.StringSerializer
+      value-serializer: org.springframework.kafka.support.serializer.JsonSerializer
     consumer:
-      group-id: heetaru-group
+      group-id: catalog-group-v2 # Зміни групу, щоб пропустити старий битий offset
       auto-offset-reset: earliest
-      # Використовуємо обгортку для безпечної десеріалізації:
       key-deserializer: org.springframework.kafka.support.serializer.ErrorHandlingDeserializer
       value-deserializer: org.springframework.kafka.support.serializer.ErrorHandlingDeserializer
       properties:
-        # Вказуємо реальні десеріалізатори всередині обгортки:
         spring.deserializer.key.delegate.class: org.apache.kafka.common.serialization.StringDeserializer
         spring.deserializer.value.delegate.class: org.springframework.kafka.support.serializer.JsonDeserializer
         spring.json.value.default.type: org.example.catalogservice.dto.OrderPlacedEvent
